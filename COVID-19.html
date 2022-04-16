@@ -1,0 +1,683 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>疾病简介：新冠</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index1.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+    
+</head>
+<script>
+    /*    $(function () {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        $('.myscroll').myScroll({
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        speed: 60, //数值越大，速度越慢
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       rowHeight: 38 //li的高度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       });*/
+
+    $(document).ready(function() {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 22
+        });
+        $(window).resize(function() {
+            var whei = $(window).width();
+            $("html").css({
+                fontSize: whei / 22
+            })
+        });
+    });
+</script>
+
+<body>
+    
+   
+
+    <div class="main">
+        <div class="header">
+            <div class="header-left fl" id="time"></div>
+            <div class="header-center fl">
+                <div class="header-title">
+                    新型冠状病毒肺炎
+                </div>
+                <div class="header-img"></div>
+            </div>
+            <div class="header-right fl"></div>
+            <div class="header-bottom fl"></div>
+        </div>
+
+
+        <div class="center">
+            <div class="center-left fl">
+                <div class="left-top rightTop border">
+                    <div class="title">疾病分类</div>
+                    <div class="top-list">
+                        <p>Don't worry，we can all get through this.</p>
+                        <ul>
+                            <li>
+                                <img src="./images/pic-5.png" alt=""> 
+                                <a href="cholera.html" target="_blank">
+                                    <span>霍乱</span>
+                                    <span>（cholera）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="COVID-19.html" target="_blank">
+                                    <span>新型冠状病毒肺炎</span>
+                                    <span>（COVID-19）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-7.png" alt="">
+                                <a href="SARS.html" target="_blank">
+                                    <span>非典型性肺炎</span>
+                                    <span>（SARS）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="Ebola virus.html" target="_blank">
+                                    <span>埃博拉</span>
+                                    <span>（Ebola）</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="left-bottom rightTop border">
+                    <div class="title">新冠累计确诊及死亡变化折线图</div>
+                    <div style="width:90%;height: 300px;">
+                        <div id="chart_3" class="allnav"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart_3'), 'Line');
+
+                            var option = {
+                                title: {
+                                    text: ''
+                                },
+                                color: [
+                                    "#DC143C", "#FFA500"
+                                ],
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    top: "5%",
+                                    text: {
+                                        color: "#FFFFFF"
+                                    },
+                                    show: 'true',
+                                    data: ['累计确诊', '累计死亡']
+                                },
+                                grid: {
+                                    x: 5,
+                                    y: 45,
+                                    x2: 5,
+                                    y2: 5,
+                                    borderWidth: 5,
+                                    containLabel: true,
+                                    bordercolor: "#4c9bfd"
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    name: "time",
+                                    namelocation: 'end',
+                                    boundaryGap: false,
+                                    color: "#4c9bfd",
+                                    axisLabel: {
+                                        color: '#314564',
+                                        fontSize: '15px'
+                                    },
+                                    data: ['2020-01-23', '2020-01-31', '2020-03', '2020-06', '2020-09', '2020-12', '2021-01', '2021-03', '2021-06', '2021-09', '2021-12', '2022-02']
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        color: "#314564",
+                                        fontSize: '15px'
+                                    },
+                                },
+                                series: [{
+                                    name: '累计确诊',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [571, 11791, 79824, 83017, 85058, 86542, 87071, 89912, 91122, 94898, 98824, 106139]
+                                }, {
+                                    name: '累计死亡',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [17, 46, 2870, 4634, 4634, 4634, 4634, 4636, 4636, 4636, 4636, 4636]
+                                }]
+                            };
+                            myChart.setOption(option);
+                        </script>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="center-cen fl">
+                <div class="cen-top rightTop border">
+                    <div class="title">时间轴</div>
+                    <div style="width:100%;height: 150px;overflow-x:auto;overflow-y:auto;">
+                        <div class="track-rcol">
+                            <div class="track-list">
+                                <ul>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">2019-12</span>
+                                        <span class="txt">湖北省武汉市部分医院陆续发现了多例有华南海鲜市场暴露史的不明原因肺炎病例，证实为2019新型冠状病毒感染引起的急性呼吸道传染病</span>
+                                    </li>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-01-24</span>
+                                        <span class="txt">中国疾控中心成功分离中国首株新型冠状病毒毒种</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-02-11</span>
+                                        <span class="txt">世界卫生组织总干事谭德塞在瑞士日内瓦宣布，将新型冠状病毒感染的肺炎命名为"COVID-19" </span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-02-22</span>
+                                        <span class="txt">国家卫生健康委发布通知，"新型冠状病毒肺炎"英文名称修订为"COVID-19" </span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-03-11</span>
+                                        <span class="txt">世卫组织认为当前新冠肺炎疫情可被称为全球大流行</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-04-04</span>
+                                        <span class="txt">中国举行全国性哀悼活动</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-08-18</span>
+                                        <span class="txt">国家卫健委修订完成了新型冠状病毒肺炎诊疗方案(试行第八版) </span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2020-09-03</span>
+                                        <span class="txt">世卫组织新冠肺炎疫情应对评估专家组共同主席在成员国吹风会上宣布了专家组成员名单，钟南山入选</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2021-03-30</span>
+                                        <span class="txt">中国-世卫组织新冠病毒溯源联合研究报告在日内瓦发布</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2021-05</span>
+                                        <span class="txt">世卫组织将最早在印度发现的新冠病毒变异毒株B.1.617.2命名为“德尔塔”变体</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2021-11-26</span>
+                                        <span class="txt">世卫组织举行紧急会议，会后世卫组织发布声明，将其列为“需要关注“的变异株，并命名为Omicron</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="cen-bottom rightTop border">
+                    <div class="title">感染人数分布图</div>
+                    <div style="width:90%;height: 150px;">
+                        <div id="chart3" style="width: 105%; height: 370px;"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart3'));
+                            var data = [{
+                                "time": 'Asia',
+                                "data": [{
+                                    "name": "India",
+                                    "value": [42905844, 37.282, "印度"]
+                                }, {
+                                    "name": "Turkey",
+                                    "value": [13913625, 12.090, "土耳其"]
+                                }, {
+                                    "name": "Iran",
+                                    "value": [7030943, 6.109, "伊朗"]
+                                }, {
+                                    "name": "Indonesia",
+                                    "value": [5504418, 4.783, "印度尼西亚"]
+                                }, {
+                                    "name": "Japan",
+                                    "value": [4826137, 4.194, "日本"]
+                                }, {
+                                    "name": "Philippines",
+                                    "value": [3660020, 3.180, "菲律宾"]
+                                }, {
+                                    "name": "Israel",
+                                    "value": [3607511, 3.135, "以色列"]
+                                }, {
+                                    "name": "Malaysia",
+                                    "value": [3367871, 2.907, "马来西亚"]
+                                }, {
+                                    "name": "Vietnam",
+                                    "value": [3120301, 2.711, "越南"]
+                                }, {
+                                    "name": "Thailand",
+                                    "value": [2844897, 2.472, "泰国"]
+                                }]
+                            }, {
+                                "time": 'Africa',
+                                "data": [{
+                                    "name": "South Africa",
+                                    "value": [3669671, 31.893, "南非"]
+                                }, {
+                                    "name": "Morocco",
+                                    "value": [1160562, 10.086, "摩洛哥"]
+                                }, {
+                                    "name": "Tunisia",
+                                    "value": [994543, 8.643, "突尼斯"]
+                                }, {
+                                    "name": "Libya",
+                                    "value": [492154, 4.277, "利比亚"]
+                                }, {
+                                    "name": "Egypt",
+                                    "value": [478984, 4.163, "埃及"]
+                                }, {
+                                    "name": "Ethiopia",
+                                    "value": [468606, 4.073, "埃塞俄比亚"]
+                                }, {
+                                    "name": "Kenya",
+                                    "value": [322869, 2.806, "肯尼亚"]
+                                }, {
+                                    "name": "Zambia",
+                                    "value": [312611, 2.717, "赞比亚"]
+                                }, {
+                                    "name": "Reunion",
+                                    "value": [292126, 2.539, "留尼汪岛"]
+                                }, {
+                                    "name": "Algeria",
+                                    "value": [264706, 2.301, "阿尔及利亚"]
+                                }]
+                            }, {
+                                "time": 'North America',
+                                "data": [{
+                                    "name": "the America",
+                                    "value": [80532307, 85.015, "美国"]
+                                }, {
+                                    "name": "Mexico",
+                                    "value": [5489127, 5.795, "墨西哥"]
+                                }, {
+                                    "name": "Canada",
+                                    "value": [3277094, 3.459, "加拿大"]
+                                }, {
+                                    "name": "Cuba",
+                                    "value": [1068148, 1.128, "古巴"]
+                                }, {
+                                    "name": "Costa Rica",
+                                    "value": [802472, 0.847, "意大利"]
+                                }, {
+                                    "name": "Guatemala",
+                                    "value": [773575, 0.817, "危地马拉"]
+                                }, {
+                                    "name": "Panama",
+                                    "value": [754362, 0.796, "巴拿马"]
+                                }, {
+                                    "name": "Dominica",
+                                    "value": [573776, 0.606, "多米尼加"]
+                                }, {
+                                    "name": "Honduras",
+                                    "value": [411212, 0.434, "洪都拉斯"]
+                                }, {
+                                    "name": "El Salvador",
+                                    "value": [147786, 0.156, "萨尔瓦多"]
+                                }]
+                            }, {
+                                "time": 'Europe',
+                                "data": [{
+                                    "name": "France",
+                                    "value": [22593109, 14.591, "法国"]
+                                }, {
+                                    "name": "United Kingdom",
+                                    "value": [18804765, 12.145, "英国"]
+                                }, {
+                                    "name": "Russia",
+                                    "value": [16175023, 10.447, "俄罗斯"]
+                                }, {
+                                    "name": "German",
+                                    "value": [14504151, 9.367, "德国"]
+                                }, {
+                                    "name": "Italy",
+                                    "value": [12693320, 8.198, "意大利"]
+                                }, {
+                                    "name": "Spanish",
+                                    "value": [10977524, 7.090, "西班牙"]
+                                }, {
+                                    "name": "Nederland",
+                                    "value": [6272493, 4.051, "荷兰"]
+                                }, {
+                                    "name": "Poland",
+                                    "value": [5651596, 3.650, "波兰"]
+                                }, {
+                                    "name": "Ukraine",
+                                    "value": [4809624, 3.106, "乌克兰"]
+                                }, {
+                                    "name": "Czech",
+                                    "value": [3568717, 2.305, "捷克"]
+                                }]
+                            }, {
+                                "time": 'South America',
+                                "data": [{
+                                    "name": "Brazil",
+                                    "value": [28671194, 53.056, "巴西"]
+                                }, {
+                                    "name": "Argentina",
+                                    "value": [8887973, 16.447, "阿根廷"]
+                                }, {
+                                    "name": "Colombia",
+                                    "value": [6058715, 11.212, "哥伦比亚"]
+                                }, {
+                                    "name": "Peru",
+                                    "value": [3508642, 6.493, "秘鲁"]
+                                }, {
+                                    "name": "Chile",
+                                    "value": [2985873, 5.525, "智利"]
+                                }, {
+                                    "name": "Bolivia",
+                                    "value": [892537, 1.652, "玻利维亚"]
+                                }, {
+                                    "name": "Uruguay",
+                                    "value": [835346, 1.546, "乌拉圭"]
+                                }, {
+                                    "name": "Ecuador",
+                                    "value": [827760, 1.532, "厄瓜多尔"]
+                                }, {
+                                    "name": "Paraguay",
+                                    "value": [639813, 1.184, "巴拉圭"]
+                                }, {
+                                    "name": "Venezuela",
+                                    "value": [513427, 0.950, "委内瑞拉"]
+                                }]
+                            }, {
+                                "time": 'Oceania',
+                                "data": [{
+                                    "name": "Australia",
+                                    "value": [3173502, 91.136, "澳大利亚"]
+                                }, {
+                                    "name": "New Zealand",
+                                    "value": [71122, 2.042, "新西兰"]
+                                }, {
+                                    "name": "French Polynesia",
+                                    "value": [65583, 1.883, "法属波利尼西亚"]
+                                }, {
+                                    "name": "Nouvelle-Calédonie",
+                                    "value": [51410, 1.476, "新喀里多尼亚"]
+                                }, {
+                                    "name": "Fiji",
+                                    "value": [63756, 1.831, "斐济"]
+                                }, {
+                                    "name": "Papua New Guinea",
+                                    "value": [41038, 1.179, "巴布亚新几内亚"]
+                                }, {
+                                    "name": "Solomon Islands",
+                                    "value": [6654, .191, "所罗门群岛"]
+                                }, {
+                                    "name": "Republic of Palau",
+                                    "value": [3726, 0.097, "帕劳共和国"]
+                                }, {
+                                    "name": "Kiribaki",
+                                    "value": [2904, 0.076, "基里巴斯"]
+                                }, {
+                                    "name": "Wallis and Futuna",
+                                    "value": [454, 0.013, "瓦利斯和富图纳群岛"]
+                                }]
+                            }]
+
+                            var option = {
+                                baseOption: {
+                                    animationDurationUpdate: 1000,
+                                    animationEasingUpdate: 'quinticInOut',
+                                    timeline: {
+                                        axisType: 'category',
+                                        orient: 'vertical',
+                                        autoPlay: true,
+                                        inverse: true,
+                                        playInterval: 5000,
+                                        left: null,
+                                        right: 50,
+                                        top: 20,
+                                        bottom: 20,
+                                        width: 46,
+                                        height: null,
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            },
+                                            emphasis: {
+                                                textStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        symbol: 'none',
+                                        lineStyle: {
+                                            color: '#555'
+                                        },
+                                        checkpointStyle: {
+                                            color: '#bbb',
+                                            borderColor: '#777',
+                                            borderWidth: 1
+                                        },
+                                        controlStyle: {
+                                            showNextBtn: false,
+                                            showPrevBtn: false,
+                                            normal: {
+                                                color: '#666',
+                                                borderColor: '#666'
+                                            },
+                                            emphasis: {
+                                                color: '#aaa',
+                                                borderColor: '#aaa'
+                                            }
+                                        },
+                                        data: data.map(function(ele) {
+                                            return ele.time
+                                        })
+                                    },
+                                    // backgroundColor: '#404a59', // 背景颜色
+                                    // title: {     
+                                    //     text: '互动营销中心全球用户',// 大标题
+                                    //     subtext: '单位:人',
+                                    //     left: 'center',
+                                    //     top: 'top',
+                                    //     textStyle: {
+                                    //         fontSize: 25,
+                                    //         color: 'rgba(255,255,255, 0.9)'
+                                    //     }
+                                    // },
+                                    tooltip: {
+                                        formatter: function(params) {
+                                            if ('value' in params.data) {
+                                                return params.data.value[2] + ': ' + params.data.value[0];
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        left: '12%',
+                                        right: '45%',
+                                        top: '70%',
+                                        bottom: 20
+                                    },
+                                    xAxis: {},
+                                    yAxis: {},
+                                    series: [{
+                                        id: 'map',
+                                        type: 'map',
+                                        mapType: 'world',
+                                        top: '5%',
+                                        bottom: '30%',
+                                        left: 50,
+                                        right: 120,
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#323c48',
+                                                borderColor: '#404a59'
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true
+                                                },
+                                                areaColor: 'rgba(255,255,255, 0.5)'
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'bar',
+                                        type: 'bar',
+                                        tooltip: {
+                                            show: false
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'right',
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'pie',
+                                        type: 'pie',
+                                        radius: ['10%', '25%'],
+                                        center: ['75%', '85%'],
+                                        roseType: 'radius',
+                                        right: 20,
+                                        tooltip: {
+                                            formatter: '{b} {d}%'
+                                        },
+                                        data: [],
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        labelLine: {
+                                            normal: {
+                                                lineStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                borderColor: 'rgba(0,0,0,0.3)',
+                                                borderSize: 1
+                                            }
+                                        }
+                                    }]
+                                },
+                                options: []
+                            }
+
+                            for (var i = 0; i < data.length; i++) {
+                                //计算其余国家GDP
+                                var restPercent = 100;
+                                var restValue = 0;
+                                data[i].data.forEach(function(ele) {
+                                    restPercent = restPercent - ele.value[1];
+                                });
+                                restValue = data[i].data[0].value[0] * (restPercent / data[i].data[0].value[1]);
+                                console.log(restPercent);
+                                console.log(restValue);
+                                option.options.push({
+                                    visualMap: [{
+                                        dimension: 0,
+                                        left: 10,
+                                        itemWidth: 12,
+                                        min: data[i].data[9].value[0],
+                                        max: data[i].data[0].value[0],
+                                        text: ['High', 'Low'],
+                                        textStyle: {
+                                            color: '#0a0b0e'
+                                        },
+                                        inRange: {
+                                            color: ['lightskyblue', 'yellow', 'orangered', 'red']
+                                        }
+                                    }],
+                                    xAxis: {
+                                        type: 'value',
+                                        boundaryGap: [0, 0.1],
+                                        axisLabel: {
+                                            show: false,
+                                        }
+                                    },
+                                    yAxis: {
+                                        type: 'category',
+                                        axisLabel: {
+                                            textStyle: {
+                                                color: '#0a0b0e'
+                                            }
+                                        },
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[2]
+                                        }).reverse()
+                                    },
+                                    series: [{
+                                        id: 'map',
+                                        data: data[i].data
+                                    }, {
+                                        id: 'bar',
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[0]
+                                        }).sort(function(a, b) {
+                                            return a > b
+                                        })
+                                    }, {
+                                        id: 'pie',
+                                        data: data[i].data.map(function(ele) {
+                                            return {
+                                                name: ele.value[2],
+                                                value: ele.value
+                                            }
+                                        }).concat({
+                                            name: '其他国家',
+                                            value: restValue
+                                        }),
+                                    }]
+                                })
+                            }
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+
+
+                </div>
+
+                <script src="js/echarts.min.js"></script>
+                <script src="js/world.js"></script>
+                <!--<script src="js/index2.js"></script>-->
+
+</body>
+
+</html>

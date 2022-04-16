@@ -1,0 +1,504 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>疾病简介：埃博拉</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index1.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+</head>
+<script>
+    /*    $(function () {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    $('.myscroll').myScroll({
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    speed: 60, //数值越大，速度越慢
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   rowHeight: 38 //li的高度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   });*/
+
+    $(document).ready(function() {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 22
+        });
+        $(window).resize(function() {
+            var whei = $(window).width();
+            $("html").css({
+                fontSize: whei / 22
+            })
+        });
+    });
+</script>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="header-left fl" id="time"></div>
+            <div class="header-center fl">
+                <div class="header-title">
+                    埃博拉
+                </div>
+                <div class="header-img"></div>
+            </div>
+            <div class="header-right fl"></div>
+            <div class="header-bottom fl"></div>
+        </div>
+
+
+        <div class="center">
+            <div class="center-left fl">
+                <div class="left-top rightTop border">
+                    <div class="title">疾病分类</div>
+                    <div class="top-list">
+                        <p>Don't worry，we can all get through this.</p>
+                        <ul>
+                            <li>
+                                <img src="./images/pic-5.png" alt="">
+                                <a href="cholera.html" target="_blank">
+                                    <span>霍乱</span>
+                                    <span>（cholera）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="COVID-19.html" target="_blank">
+                                    <span>新型冠状病毒肺炎</span>
+                                    <span>（COVID-19）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-7.png" alt="">
+                                <a href="SARS.html" target="_blank">
+                                    <span>非典型性肺炎</span>
+                                    <span>（SARS）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="plague.html" target="_blank">
+                                    <span>埃博拉</span>
+                                    <span>（Ebola）</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="left-bottom rightTop border">
+                    <div class="title">埃博拉累计确诊及死亡变化折线图</div>
+                    <div style="width:90%;height: 300px;">
+                        <div id="chart_3" class="allnav"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart_3'), 'Line');
+
+                            var option = {
+                                title: {
+                                    text: ''
+                                },
+                                color: [
+                                    "#DC143C", "#FFA500"
+                                ],
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    top: "5%",
+                                    text: {
+                                        color: "#FFFFFF"
+                                    },
+                                    show: 'true',
+                                    data: ['累计确诊', '累计死亡']
+                                },
+                                grid: {
+                                    x: 5,
+                                    y: 45,
+                                    x2: 5,
+                                    y2: 5,
+                                    borderWidth: 5,
+                                    containLabel: true,
+                                    bordercolor: "#4c9bfd"
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    name: "time",
+                                    namelocation: 'end',
+                                    boundaryGap: false,
+                                    color: "#4c9bfd",
+                                    axisLabel: {
+                                        color: '#314564',
+                                        fontSize: '15px'
+                                    },
+                                    data: ['1976', '1979', '1994', '1995', '1996', '2000', '2001', '2002', '2005', '2012', '2014', '2017']
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        color: "#314564",
+                                        fontSize: '15px'
+                                    },
+                                },
+                                series: [{
+                                    name: '累计确诊',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [602, 635, 684, 999, 1059, 1484, 1607, 1750, 1762, 1815, 21815, 24315]
+                                }, {
+                                    name: '累计死亡',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [458, 480, 511, 753, 798, 1023, 1120, 1248, 1257, 1273, 6873, 8473]
+                                }]
+                            };
+                            myChart.setOption(option);
+                        </script>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="center-cen fl">
+                <div class="cen-top rightTop border">
+                    <div class="title">时间轴</div>
+                    <div style="width:100%;height: 150px;overflow-x:auto;overflow-y:auto;">
+                        <div class="track-rcol">
+                            <div class="track-list">
+                                <ul>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">1976</span>
+                                        <span class="txt">苏丹南部和刚果(金)(旧称扎伊尔)的埃博拉河地区首次发现埃博拉病毒的存在</span>
+                                    </li>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">1979</span>
+                                        <span class="txt">苏丹再次爆发埃博拉疫情</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2006-02</span>
+                                        <span class="txt">美国国家卫生研究院负责人加里·纳贝尔称，预防致命性埃博拉病毒的疫苗已经通过了最初的人类安全检测，其令人充满希望的迹象表明，这种疫苗能使人类免受此病的感染</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2009-07-09</span>
+                                        <span class="txt">在新一期美国《科学》杂志上报道，在菲律宾一些农场的猪身上鉴别出一种名为reston的埃博拉病毒（EBO-R）此但与其他类型的埃博拉病毒不同，到目前为止，它还没有对人造成威胁</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2014</span>
+                                        <span class="txt">肆虐西非国家几内亚、利比里亚、塞拉利昂的埃博拉病毒蔓延速度惊人</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2014-08-09</span>
+                                        <span class="txt">中国宣布已掌握埃博拉病毒抗体基因，同时具备对埃博拉病毒进行及时检测的诊断试剂研发能力</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2016-12-23</span>
+                                        <span class="txt">世界卫生组织宣布，由加拿大公共卫生局研发的疫苗可实现高效防护埃博拉病毒</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2018-05</span>
+                                        <span class="txt">刚果金暴发埃博拉疫情</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2019-07-17</span>
+                                        <span class="txt">世界卫生组织（WHO）宣布，非洲国家刚果（金）爆发的埃博拉病毒疫情已经成为全球卫生紧急事件</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="cen-bottom rightTop border">
+                    <div class="title">感染人数分布图</div>
+                    <div style="width:90%;height: 150px;">
+                        <div id="chart3" style="width: 105%; height: 370px;"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart3'));
+                            var data = [{
+                                "time": 'Africa',
+                                "data": [{
+                                    "name": "Sierra Leone",
+                                    "value": [9004, 40.803, "塞拉利昂"]
+                                }, {
+                                    "name": "Liberia",
+                                    "value": [7862, 35.628, "利比里亚"]
+                                }, {
+                                    "name": "Guinea",
+                                    "value": [2597, 11.769, "几内亚"]
+                                }, {
+                                    "name": "Nigeria",
+                                    "value": [770, 3.489, "尼日利亚"]
+                                }, {
+                                    "name": "Congo",
+                                    "value": [644, 2.918, "刚果金"]
+                                }, {
+                                    "name": "Uganda",
+                                    "value": [478, 2.166, "乌干达"]
+                                }, {
+                                    "name": "Sultan",
+                                    "value": [317, 1.437, "苏丹"]
+                                }, {
+                                    "name": "Congo",
+                                    "value": [216, 0.979, "刚果布"]
+                                }, {
+                                    "name": "Gabon",
+                                    "value": [171, 0.775, "加蓬"]
+                                }, {
+                                    "name": "Mali",
+                                    "value": [8, 0.036, "马里"]
+                                }]
+                            }]
+
+
+                            var option = {
+                                baseOption: {
+                                    animationDurationUpdate: 1000,
+                                    animationEasingUpdate: 'quinticInOut',
+                                    timeline: {
+                                        axisType: 'category',
+                                        orient: 'vertical',
+                                        autoPlay: true,
+                                        inverse: true,
+                                        playInterval: 5000,
+                                        left: null,
+                                        right: 50,
+                                        top: 20,
+                                        bottom: 20,
+                                        width: 46,
+                                        height: null,
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            },
+                                            emphasis: {
+                                                textStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        symbol: 'none',
+                                        lineStyle: {
+                                            color: '#555'
+                                        },
+                                        checkpointStyle: {
+                                            color: '#bbb',
+                                            borderColor: '#777',
+                                            borderWidth: 1
+                                        },
+                                        controlStyle: {
+                                            showNextBtn: false,
+                                            showPrevBtn: false,
+                                            normal: {
+                                                color: '#666',
+                                                borderColor: '#666'
+                                            },
+                                            emphasis: {
+                                                color: '#aaa',
+                                                borderColor: '#aaa'
+                                            }
+                                        },
+                                        data: data.map(function(ele) {
+                                            return ele.time
+                                        })
+                                    },
+                                    // backgroundColor: '#404a59', // 背景颜色
+                                    // title: {     
+                                    //     text: '互动营销中心全球用户',// 大标题
+                                    //     subtext: '单位:人',
+                                    //     left: 'center',
+                                    //     top: 'top',
+                                    //     textStyle: {
+                                    //         fontSize: 25,
+                                    //         color: 'rgba(255,255,255, 0.9)'
+                                    //     }
+                                    // },
+                                    tooltip: {
+                                        formatter: function(params) {
+                                            if ('value' in params.data) {
+                                                return params.data.value[2] + ': ' + params.data.value[0];
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        left: '12%',
+                                        right: '45%',
+                                        top: '70%',
+                                        bottom: 20
+                                    },
+                                    xAxis: {},
+                                    yAxis: {},
+                                    series: [{
+                                        id: 'map',
+                                        type: 'map',
+                                        mapType: 'world',
+                                        top: '5%',
+                                        bottom: '30%',
+                                        left: 50,
+                                        right: 120,
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#323c48',
+                                                borderColor: '#404a59'
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true
+                                                },
+                                                areaColor: 'rgba(255,255,255, 0.5)'
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'bar',
+                                        type: 'bar',
+                                        tooltip: {
+                                            show: false
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'right',
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'pie',
+                                        type: 'pie',
+                                        radius: ['10%', '25%'],
+                                        center: ['75%', '85%'],
+                                        roseType: 'radius',
+                                        right: 20,
+                                        tooltip: {
+                                            formatter: '{b} {d}%'
+                                        },
+                                        data: [],
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        labelLine: {
+                                            normal: {
+                                                lineStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                borderColor: 'rgba(0,0,0,0.3)',
+                                                borderSize: 1
+                                            }
+                                        }
+                                    }]
+                                },
+                                options: []
+                            }
+
+                            for (var i = 0; i < data.length; i++) {
+                                //计算其余国家GDP
+                                var restPercent = 100;
+                                var restValue = 0;
+                                data[i].data.forEach(function(ele) {
+                                    restPercent = restPercent - ele.value[1];
+                                });
+                                restValue = data[i].data[0].value[0] * (restPercent / data[i].data[0].value[1]);
+                                console.log(restPercent);
+                                console.log(restValue);
+                                option.options.push({
+                                    visualMap: [{
+                                        dimension: 0,
+                                        left: 10,
+                                        itemWidth: 12,
+                                        min: data[i].data[9].value[0],
+                                        max: data[i].data[0].value[0],
+                                        text: ['High', 'Low'],
+                                        textStyle: {
+                                            color: '#0a0b0e'
+                                        },
+                                        inRange: {
+                                            color: ['lightskyblue', 'yellow', 'orangered', 'red']
+                                        }
+                                    }],
+                                    xAxis: {
+                                        type: 'value',
+                                        boundaryGap: [0, 0.1],
+                                        axisLabel: {
+                                            show: false,
+                                        }
+                                    },
+                                    yAxis: {
+                                        type: 'category',
+                                        axisLabel: {
+                                            textStyle: {
+                                                color: '#0a0b0e'
+                                            }
+                                        },
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[2]
+                                        }).reverse()
+                                    },
+                                    series: [{
+                                        id: 'map',
+                                        data: data[i].data
+                                    }, {
+                                        id: 'bar',
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[0]
+                                        }).sort(function(a, b) {
+                                            return a > b
+                                        })
+                                    }, {
+                                        id: 'pie',
+                                        data: data[i].data.map(function(ele) {
+                                            return {
+                                                name: ele.value[2],
+                                                value: ele.value
+                                            }
+                                        }).concat({
+                                            name: '其他国家',
+                                            value: restValue
+                                        }),
+                                    }]
+                                })
+                            }
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+
+
+                </div>
+
+                <script src="js/echarts.min.js"></script>
+                <script src="js/world.js"></script>
+                <!--<script src="js/index2.js"></script>-->
+
+</body>
+
+</html>

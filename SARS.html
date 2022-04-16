@@ -1,0 +1,522 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>疾病简介：非典</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index1.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+</head>
+<script>
+    /*    $(function () {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $('.myscroll').myScroll({
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                speed: 60, //数值越大，速度越慢
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               rowHeight: 38 //li的高度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               });*/
+
+    $(document).ready(function() {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 22
+        });
+        $(window).resize(function() {
+            var whei = $(window).width();
+            $("html").css({
+                fontSize: whei / 22
+            })
+        });
+    });
+</script>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="header-left fl" id="time"></div>
+            <div class="header-center fl">
+                <div class="header-title">
+                    非典型性肺炎
+                </div>
+                <div class="header-img"></div>
+            </div>
+            <div class="header-right fl"></div>
+            <div class="header-bottom fl"></div>
+        </div>
+
+
+        <div class="center">
+            <div class="center-left fl">
+                <div class="left-top rightTop border">
+                    <div class="title">疾病分类</div>
+                    <div class="top-list">
+                        <p>Don't worry，we can all get through this.</p>
+                        <ul>
+                            <li>
+                                <img src="./images/pic-5.png" alt="">
+                                <a href="cholera.html" target="_blank">
+                                    <span>霍乱</span>
+                                    <span>（cholera）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="COVID-19.html" target="_blank">
+                                    <span>新型冠状病毒肺炎</span>
+                                    <span>（COVID-19）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-7.png" alt="">
+                                <a href="SARS.html" target="_blank">
+                                    <span>非典型性肺炎</span>
+                                    <span>（SARS）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="Ebola virus.html" target="_blank">
+                                    <span>埃博拉</span>
+                                    <span>（Ebola）</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="left-bottom rightTop border">
+                    <div class="title">非典累计确诊及死亡变化折线图</div>
+                    <div style="width:90%;height: 300px;">
+                        <div id="chart_3" class="allnav"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart_3'), 'Line');
+
+                            var option = {
+                                title: {
+                                    text: ''
+                                },
+                                color: [
+                                    "#DC143C", "#FFA500"
+                                ],
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    top: "5%",
+                                    text: {
+                                        color: "#FFFFFF"
+                                    },
+                                    show: 'true',
+                                    data: ['累计确诊', '累计死亡']
+                                },
+                                grid: {
+                                    x: 5,
+                                    y: 45,
+                                    x2: 5,
+                                    y2: 5,
+                                    borderWidth: 5,
+                                    containLabel: true,
+                                    bordercolor: "#4c9bfd"
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    name: "time",
+                                    namelocation: 'end',
+                                    boundaryGap: false,
+                                    color: "#4c9bfd",
+                                    axisLabel: {
+                                        color: '#314564',
+                                        fontSize: '15px'
+                                    },
+                                    data: ['2003-01', '2003-02', '2003-03', '2003-04', '2003-05', '2003-06']
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        color: "#314564",
+                                        fontSize: '15px'
+                                    },
+                                },
+                                series: [{
+                                    name: '累计确诊',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [2601, 2601, 2601, 3460, 5328, 5336]
+                                }, {
+                                    name: '累计死亡',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [115, 115, 115, 159, 332, 347]
+                                }]
+                            };
+                            myChart.setOption(option);
+                        </script>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="center-cen fl">
+                <div class="cen-top rightTop border">
+                    <div class="title">时间轴</div>
+                    <div style="width:100%;height: 150px;overflow-x:auto;overflow-y:auto;">
+                        <div class="track-rcol">
+                            <div class="track-list">
+                                <ul>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">2002-11-16</span>
+                                        <span class="txt">在广东顺德爆发</span>
+                                    </li>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">2003年第一季度</span>
+                                        <span class="txt">“非典”疫情主要集中在广东省</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2003-04</span>
+                                        <span class="txt">“非典”疫情开始向其他多数省份扩散，并逐步向北京、山西、内蒙古、河北、天津集中</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2003-05</span>
+                                        <span class="txt">全国疫情出现稳中有降态势</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2003-06-20</span>
+                                        <span class="txt">北京小汤山医院东大门挂着醒目的横幅：“走出小汤山，一生都平安。”当天，最后一批18名非典治愈患者出院。</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2003-06-24</span>
+                                        <span class="txt">世界卫生组织宣布解除对北京的旅行警告。至此，我国抗击非典取得阶段性重大胜利</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="cen-bottom rightTop border">
+                    <div class="title">感染人数分布图</div>
+                    <div style="width:90%;height: 150px;">
+                        <div id="chart3" style="width: 105%; height: 370px;"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart3'));
+                            var data = [{
+                                "time": 'Asia',
+                                "data": [{
+                                    "name": "China",
+                                    "value": [7429, 95.599, "中国"]
+                                }, {
+                                    "name": "Singapore",
+                                    "value": [238, 3.063, "新加坡"]
+                                }, {
+                                    "name": "Vietnam",
+                                    "value": [63, 0.811, "越南"]
+                                }, {
+                                    "name": "Philippines",
+                                    "value": [14, 0.180, "菲律宾"]
+                                }, {
+                                    "name": "Thailand",
+                                    "value": [9, 0.116, "泰国"]
+                                }, {
+                                    "name": "Mongolia",
+                                    "value": [9, 0.116, "蒙古国"]
+                                }, {
+                                    "name": "India",
+                                    "value": [3, 0.039, "印度"]
+                                }, {
+                                    "name": "South Korea",
+                                    "value": [3, 0.039, "韩国"]
+                                }, {
+                                    "name": "Indonesia",
+                                    "value": [2, 0.026, "印尼"]
+                                }, {
+                                    "name": "Kuwait",
+                                    "value": [1, 0.013, "科威特"]
+                                }]
+                            }, {
+                                "time": 'Else',
+                                "data": [{
+                                    "name": "Canada",
+                                    "value": [251, 79.683, "加拿大"]
+                                }, {
+                                    "name": "United States of America (USA)",
+                                    "value": [27, 8.571, "美国"]
+                                }, {
+                                    "name": "Germany",
+                                    "value": [9, 2.857, "德国"]
+                                }, {
+                                    "name": "France",
+                                    "value": [7, 2.222, "法国"]
+                                }, {
+                                    "name": "Australia",
+                                    "value": [6, 1.905, "澳大利亚"]
+                                }, {
+                                    "name": "Sweden",
+                                    "value": [5, 1.587, "瑞典"]
+                                }, {
+                                    "name": "Italy",
+                                    "value": [4, 1.270, "意大利"]
+                                }, {
+                                    "name": "United Kingdom(UK)",
+                                    "value": [4, 1.270, "英国"]
+                                }, {
+                                    "name": "New Zealand",
+                                    "value": [1, 0.317, "新西兰"]
+                                }, {
+                                    "name": "South Africa",
+                                    "value": [1, 0.317, "南非"]
+                                }]
+                            }]
+
+
+                            var option = {
+                                baseOption: {
+                                    animationDurationUpdate: 1000,
+                                    animationEasingUpdate: 'quinticInOut',
+                                    timeline: {
+                                        axisType: 'category',
+                                        orient: 'vertical',
+                                        autoPlay: true,
+                                        inverse: true,
+                                        playInterval: 5000,
+                                        left: null,
+                                        right: 50,
+                                        top: 20,
+                                        bottom: 20,
+                                        width: 46,
+                                        height: null,
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            },
+                                            emphasis: {
+                                                textStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        symbol: 'none',
+                                        lineStyle: {
+                                            color: '#555'
+                                        },
+                                        checkpointStyle: {
+                                            color: '#bbb',
+                                            borderColor: '#777',
+                                            borderWidth: 1
+                                        },
+                                        controlStyle: {
+                                            showNextBtn: false,
+                                            showPrevBtn: false,
+                                            normal: {
+                                                color: '#666',
+                                                borderColor: '#666'
+                                            },
+                                            emphasis: {
+                                                color: '#aaa',
+                                                borderColor: '#aaa'
+                                            }
+                                        },
+                                        data: data.map(function(ele) {
+                                            return ele.time
+                                        })
+                                    },
+                                    // backgroundColor: '#404a59', // 背景颜色
+                                    // title: {     
+                                    //     text: '互动营销中心全球用户',// 大标题
+                                    //     subtext: '单位:人',
+                                    //     left: 'center',
+                                    //     top: 'top',
+                                    //     textStyle: {
+                                    //         fontSize: 25,
+                                    //         color: 'rgba(255,255,255, 0.9)'
+                                    //     }
+                                    // },
+                                    tooltip: {
+                                        formatter: function(params) {
+                                            if ('value' in params.data) {
+                                                return params.data.value[2] + ': ' + params.data.value[0];
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        left: '12%',
+                                        right: '45%',
+                                        top: '70%',
+                                        bottom: 20
+                                    },
+                                    xAxis: {},
+                                    yAxis: {},
+                                    series: [{
+                                        id: 'map',
+                                        type: 'map',
+                                        mapType: 'world',
+                                        top: '5%',
+                                        bottom: '30%',
+                                        left: 50,
+                                        right: 120,
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#323c48',
+                                                borderColor: '#404a59'
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true
+                                                },
+                                                areaColor: 'rgba(255,255,255, 0.5)'
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'bar',
+                                        type: 'bar',
+                                        tooltip: {
+                                            show: false
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'right',
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'pie',
+                                        type: 'pie',
+                                        radius: ['10%', '25%'],
+                                        center: ['75%', '85%'],
+                                        roseType: 'radius',
+                                        right: 20,
+                                        tooltip: {
+                                            formatter: '{b} {d}%'
+                                        },
+                                        data: [],
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        labelLine: {
+                                            normal: {
+                                                lineStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                borderColor: 'rgba(0,0,0,0.3)',
+                                                borderSize: 1
+                                            }
+                                        }
+                                    }]
+                                },
+                                options: []
+                            }
+
+                            for (var i = 0; i < data.length; i++) {
+                                //计算其余国家GDP
+                                var restPercent = 100;
+                                var restValue = 0;
+                                data[i].data.forEach(function(ele) {
+                                    restPercent = restPercent - ele.value[1];
+                                });
+                                restValue = data[i].data[0].value[0] * (restPercent / data[i].data[0].value[1]);
+                                console.log(restPercent);
+                                console.log(restValue);
+                                option.options.push({
+                                    visualMap: [{
+                                        dimension: 0,
+                                        left: 10,
+                                        itemWidth: 12,
+                                        min: data[i].data[9].value[0],
+                                        max: data[i].data[0].value[0],
+                                        text: ['High', 'Low'],
+                                        textStyle: {
+                                            color: '#0a0b0e'
+                                        },
+                                        inRange: {
+                                            color: ['lightskyblue', 'yellow', 'orangered', 'red']
+                                        }
+                                    }],
+                                    xAxis: {
+                                        type: 'value',
+                                        boundaryGap: [0, 0.1],
+                                        axisLabel: {
+                                            show: false,
+                                        }
+                                    },
+                                    yAxis: {
+                                        type: 'category',
+                                        axisLabel: {
+                                            textStyle: {
+                                                color: '#0a0b0e'
+                                            }
+                                        },
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[2]
+                                        }).reverse()
+                                    },
+                                    series: [{
+                                        id: 'map',
+                                        data: data[i].data
+                                    }, {
+                                        id: 'bar',
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[0]
+                                        }).sort(function(a, b) {
+                                            return a > b
+                                        })
+                                    }, {
+                                        id: 'pie',
+                                        data: data[i].data.map(function(ele) {
+                                            return {
+                                                name: ele.value[2],
+                                                value: ele.value
+                                            }
+                                        }).concat({
+                                            name: '其他国家',
+                                            value: restValue
+                                        }),
+                                    }]
+                                })
+                            }
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+
+
+                </div>
+
+                <script src="js/echarts.min.js"></script>
+                <script src="js/world.js"></script>
+                <!--<script src="js/index2.js"></script>-->
+
+</body>
+
+</html>

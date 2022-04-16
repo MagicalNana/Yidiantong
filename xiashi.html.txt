@@ -1,0 +1,60 @@
+<!-- Start Way to Safe 
+    ============================================= -->
+    <div id="protect" class="safe-way-area fixed-bg default-padding">
+        <!-- Fixed Shape BG -->
+        <div class="fixed-shape-bg">
+            <img src="assets/img/bg.png" alt="Thumb">
+        </div>
+        <!-- End Fixed Shape BG -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="site-heading text-center">
+                        <h2>How to protect yourself</h2>
+                        <div class="devider">
+                            <img src="assets/img/icon-sm.png" alt="Thumb">
+                        </div>
+                        <p>
+                            While mirth large of on front. Ye he greater related adapted proceed entered an. Through it examine express promise no. Past add size game cold girl off how old
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="safe-way-items">
+                <div class="row">
+                    <div class="thumb col-md-6">
+                        <img src="assets/img/protect-bg.png" alt="Thumb">
+                    </div>
+                    <div class="info col-md-6">
+                        <ul>
+                            <li>
+                                <h4><i class="fas fa-check-circle"></i> Stay at Home</h4>
+                                <p>
+                                    Certain it waiting no entered is. Passed her indeed uneasy shy polite appear denied. Oh less girl no walk. At he spot with five of view. 
+                                </p>
+                            </li>
+                            <li>
+                                <h4><i class="fas fa-check-circle"></i> Wear Mask</h4>
+                                <p>
+                                    against no he without subject. Bed connection unreserved preference partiality not unaffected. Years merit trees so think in hoped we as. Passed her indeed uneasy
+                                </p>
+                            </li>
+                            <li>
+                                <h4><i class="fas fa-check-circle"></i> Cover your mouth and nose</h4>
+                                <p>
+                                    Certain it waiting no entered is. Passed her indeed uneasy shy polite appear denied. Oh less girl no walk. At he spot with five of view. 
+                                </p>
+                            </li>
+                            <li>
+                                <h4><i class="fas fa-check-circle"></i> Avoid Crowed Places</h4>
+                                <p>
+                                    Certain it waiting no entered is. Passed her indeed uneasy shy polite appear denied. Oh less girl no walk. At he spot with five of view. 
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Way to Safe -->

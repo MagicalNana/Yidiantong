@@ -1,0 +1,570 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>疾病简介：霍乱</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link rel="stylesheet" href="css/public.css">
+    <link rel="stylesheet" href="css/index1.css">
+    <link rel="stylesheet" href="css/timeline.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="js/world.js"></script>
+</head>
+<script>
+    /*    $(function () {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            $('.myscroll').myScroll({
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            speed: 60, //数值越大，速度越慢
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           rowHeight: 38 //li的高度
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             });
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           });*/
+
+    $(document).ready(function() {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 22
+        });
+        $(window).resize(function() {
+            var whei = $(window).width();
+            $("html").css({
+                fontSize: whei / 22
+            })
+        });
+    });
+</script>
+
+<body>
+    <div class="main">
+        <div class="header">
+            <div class="header-left fl" id="time"></div>
+            <div class="header-center fl">
+                <div class="header-title">
+                    霍乱
+                </div>
+                <div class="header-img"></div>
+            </div>
+            <div class="header-right fl"></div>
+            <div class="header-bottom fl"></div>
+        </div>
+
+
+        <div class="center">
+            <div class="center-left fl">
+                <div class="left-top rightTop border">
+                    <div class="title">疾病分类</div>
+                    <div class="top-list">
+                        <p>Don't worry，we can all get through this.</p>
+                        <ul>
+                            <li>
+                                <img src="./images/pic-5.png" alt="">
+                                <a href="cholera.html" target="_blank">
+                                    <span>霍乱</span>
+                                    <span>（cholera）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="COVID-19.html" target="_blank">
+                                    <span>新型冠状病毒肺炎</span>
+                                    <span>（COVID-19）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-7.png" alt="">
+                                <a href="SARS.html" target="_blank">
+                                    <span>非典型性肺炎</span>
+                                    <span>（SARS）</span>
+                                </a>
+                            </li>
+                            <li>
+                                <img src="./images/pic-6.png" alt="">
+                                <a href="Ebola virus.html" target="_blank">
+                                    <span>埃博拉</span>
+                                    <span>（Ebola）</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+                <div class="left-bottom rightTop border">
+                    <div class="title">霍乱累计确诊及死亡变化折线图</div>
+                    <div style="width:90%;height: 300px;">
+                        <div id="chart_3" class="allnav"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart_3'), 'Line');
+
+                            var option = {
+                                title: {
+                                    text: ''
+                                },
+                                color: [
+                                    "#DC143C", "#FFA500"
+                                ],
+                                tooltip: {
+                                    trigger: 'axis'
+                                },
+                                legend: {
+                                    top: "5%",
+                                    text: {
+                                        color: "#FFFFFF"
+                                    },
+                                    show: 'true',
+                                    data: ['累计确诊', '累计死亡']
+                                },
+                                grid: {
+                                    x: 5,
+                                    y: 45,
+                                    x2: 5,
+                                    y2: 5,
+                                    borderWidth: 5,
+                                    containLabel: true,
+                                    bordercolor: "#4c9bfd"
+                                },
+                                xAxis: {
+                                    type: 'category',
+                                    name: "time",
+                                    namelocation: 'end',
+                                    boundaryGap: false,
+                                    color: "#4c9bfd",
+                                    axisLabel: {
+                                        color: '#314564',
+                                        fontSize: '15px'
+                                    },
+                                    data: ['1950', '1960', '1970', '1980', '1990', '2000', '2010', '2020']
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    axisLabel: {
+                                        color: "#314564",
+                                        fontSize: '15px'
+                                    },
+                                },
+                                series: [{
+                                    name: '累计确诊',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [1, 1, 387, 560, 14103, 84353, 86685, 86962]
+                                }, {
+                                    name: '累计死亡',
+                                    type: 'line',
+                                    stack: 'Total',
+                                    data: [1, 1, 25, 27, 180, 718, 726, 727]
+                                }]
+                            };
+                            myChart.setOption(option);
+                        </script>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="center-cen fl">
+                <div class="cen-top rightTop border">
+                    <div class="title">时间轴</div>
+                    <div style="width:100%;height: 150px;overflow-x:auto;overflow-y:auto;">
+                        <div class="track-rcol">
+                            <div class="track-list">
+                                <ul>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">1816年--1826年</span>
+                                        <span class="txt">首先被控制在印度次大陆，在孟加拉大规模爆发。到1820年，传播遍及印度</span>
+                                    </li>
+                                    <li class="first">
+                                        <i class="node-icon"></i>
+                                        <span class="time">1829年--1851年</span>
+                                        <span class="txt">在1832年年蔓延至欧洲、伦敦，同年又蔓延至安大略、加拿大和纽约，在1834年又发展到北美的太平洋海岸</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1852年--1860年</span>
+                                        <span class="txt">主要影响了俄罗斯，造成了超过百万人的死亡 </span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1863年--1875年</span>
+                                        <span class="txt">传播到了大部分欧洲及非洲区域</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1866年</span>
+                                        <span class="txt">在北美爆发</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1892年</span>
+                                        <span class="txt">霍乱污染德国汉堡自来水，致8606人死亡</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1899年--1923年</span>
+                                        <span class="txt">由于公共卫生的进步，只对欧洲造成很小的影响。但俄罗斯被再次严重影响 </span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">1961年</span>
+                                        <span class="txt">发生在印尼，1963年传染到孟加拉，1964年传染到印度，并于1966年传播到苏联</span>
+                                    </li>
+                                    <li>
+                                        <i class="node-icon"></i>
+                                        <span class="time">2017年4月</span>
+                                        <span class="txt">非洲霍乱疫情开始蔓延，其中也门疫情最为严重</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="cen-bottom rightTop border">
+                    <div class="title">感染人数分布图</div>
+                    <div style="width:90%;height: 150px;">
+                        <div id="chart3" style="width: 105%; height: 370px;"></div>
+                        <script type="text/javascript">
+                            var myChart = echarts.init(document.getElementById('chart3'));
+                            var data = [{
+                                "time": 'Asia',
+                                "data": [{
+                                    "name": "India",
+                                    "value": [38000000, 89.786, "印度"]
+                                }, {
+                                    "name": "Yemen",
+                                    "value": [1966467, 4.646, "也门"]
+                                }, {
+                                    "name": "Ethiopia",
+                                    "value": [525000, 1.240, "埃塞俄比亚"]
+                                }, {
+                                    "name": "Bangladesh",
+                                    "value": [500000, 1.181, "孟加拉国"]
+                                }, {
+                                    "name": "Indonesia",
+                                    "value": [436000, 1.030, "印度尼西亚"]
+                                }, {
+                                    "name": "Japan",
+                                    "value": [370000, 0.874, "日本"]
+                                }, {
+                                    "name": "Oman",
+                                    "value": [300000, 0.709, "阿曼"]
+                                }, {
+                                    "name": "Myanmar",
+                                    "value": [133000, 0.314, "缅甸"]
+                                }, {
+                                    "name": "China",
+                                    "value": [86962, 0.205, "中国"]
+                                }, {
+                                    "name": "Philippines",
+                                    "value": [5500, 0.013, "菲律宾"]
+                                }]
+                            }, {
+                                "time": 'Africa',
+                                "data": [{
+                                    "name": "Republic of the Congo",
+                                    "value": [446663, 55.383, "刚果共和国"]
+                                }, {
+                                    "name": "Zimbabwe",
+                                    "value": [97000, 12.027, "津巴布韦"]
+                                }, {
+                                    "name": "Somalia",
+                                    "value": [78784, 9.769, "索马里"]
+                                }, {
+                                    "name": "Cameroon",
+                                    "value": [70948, 8.797, "喀麦隆"]
+                                }, {
+                                    "name": "Tanzania",
+                                    "value": [33421, 4.144, "坦桑尼亚"]
+                                }, {
+                                    "name": "Benin",
+                                    "value": [27713, 3.436, "贝宁"]
+                                }, {
+                                    "name": "Burundi",
+                                    "value": [20697, 2.566, "布隆迪"]
+                                }, {
+                                    "name": "South Sudan",
+                                    "value": [20438, 2.534, "南苏丹"]
+                                }, {
+                                    "name": "Mozambique",
+                                    "value": [7000, 0.868, "莫桑比克"]
+                                }, {
+                                    "name": "Kenya",
+                                    "value": [3839, 0.476, "肯尼亚"]
+                                }]
+                            }, {
+                                "time": 'Else',
+                                "data": [{
+                                    "name": "Tuvalu",
+                                    "value": [800000, 32.271, "图瓦卢"]
+                                }, {
+                                    "name": "Russia",
+                                    "value": [620000, 25.010, "俄罗斯"]
+                                }, {
+                                    "name": "Haiti",
+                                    "value": [500000, 20.169, "海地"]
+                                }, {
+                                    "name": "Hungary",
+                                    "value": [190000, 7.664, "匈牙利"]
+                                }, {
+                                    "name": "United Kingdom",
+                                    "value": [130000, 5.244, "英国"]
+                                }, {
+                                    "name": "Marshall Islands",
+                                    "value": [115000, 4.639, "马绍尔群岛"]
+                                }, {
+                                    "name": "Papua New Guinea",
+                                    "value": [83000, 3.348, "巴布亚新几内亚"]
+                                }, {
+                                    "name": "Tonga",
+                                    "value": [20000, 0.807, "汤加"]
+                                }, {
+                                    "name": "Dominican Republic",
+                                    "value": [13000, 0.524, "多米尼加共和国"]
+                                }, {
+                                    "name": "Albania",
+                                    "value": [8000, 0.323, "阿尔巴尼亚"]
+                                }]
+                            }]
+
+
+                            var option = {
+                                baseOption: {
+                                    animationDurationUpdate: 1000,
+                                    animationEasingUpdate: 'quinticInOut',
+                                    timeline: {
+                                        axisType: 'category',
+                                        orient: 'vertical',
+                                        autoPlay: true,
+                                        inverse: true,
+                                        playInterval: 5000,
+                                        left: null,
+                                        right: 50,
+                                        top: 20,
+                                        bottom: 20,
+                                        width: 46,
+                                        height: null,
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            },
+                                            emphasis: {
+                                                textStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        symbol: 'none',
+                                        lineStyle: {
+                                            color: '#555'
+                                        },
+                                        checkpointStyle: {
+                                            color: '#bbb',
+                                            borderColor: '#777',
+                                            borderWidth: 1
+                                        },
+                                        controlStyle: {
+                                            showNextBtn: false,
+                                            showPrevBtn: false,
+                                            normal: {
+                                                color: '#666',
+                                                borderColor: '#666'
+                                            },
+                                            emphasis: {
+                                                color: '#aaa',
+                                                borderColor: '#aaa'
+                                            }
+                                        },
+                                        data: data.map(function(ele) {
+                                            return ele.time
+                                        })
+                                    },
+                                    // backgroundColor: '#404a59', // 背景颜色
+                                    // title: {     
+                                    //     text: '互动营销中心全球用户',// 大标题
+                                    //     subtext: '单位:人',
+                                    //     left: 'center',
+                                    //     top: 'top',
+                                    //     textStyle: {
+                                    //         fontSize: 25,
+                                    //         color: 'rgba(255,255,255, 0.9)'
+                                    //     }
+                                    // },
+                                    tooltip: {
+                                        formatter: function(params) {
+                                            if ('value' in params.data) {
+                                                return params.data.value[2] + ': ' + params.data.value[0];
+                                            }
+                                        }
+                                    },
+                                    grid: {
+                                        left: '12%',
+                                        right: '45%',
+                                        top: '70%',
+                                        bottom: 20
+                                    },
+                                    xAxis: {},
+                                    yAxis: {},
+                                    series: [{
+                                        id: 'map',
+                                        type: 'map',
+                                        mapType: 'world',
+                                        top: '5%',
+                                        bottom: '30%',
+                                        left: 50,
+                                        right: 120,
+                                        itemStyle: {
+                                            normal: {
+                                                areaColor: '#323c48',
+                                                borderColor: '#404a59'
+                                            },
+                                            emphasis: {
+                                                label: {
+                                                    show: true
+                                                },
+                                                areaColor: 'rgba(255,255,255, 0.5)'
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'bar',
+                                        type: 'bar',
+                                        tooltip: {
+                                            show: false
+                                        },
+                                        label: {
+                                            normal: {
+                                                show: true,
+                                                position: 'right',
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        data: []
+                                    }, {
+                                        id: 'pie',
+                                        type: 'pie',
+                                        radius: ['10%', '25%'],
+                                        center: ['75%', '85%'],
+                                        roseType: 'radius',
+                                        right: 20,
+                                        tooltip: {
+                                            formatter: '{b} {d}%'
+                                        },
+                                        data: [],
+                                        label: {
+                                            normal: {
+                                                textStyle: {
+                                                    color: '#0a0b0e'
+                                                }
+                                            }
+                                        },
+                                        labelLine: {
+                                            normal: {
+                                                lineStyle: {
+                                                    color: '#ddd'
+                                                }
+                                            }
+                                        },
+                                        itemStyle: {
+                                            normal: {
+                                                borderColor: 'rgba(0,0,0,0.3)',
+                                                borderSize: 1
+                                            }
+                                        }
+                                    }]
+                                },
+                                options: []
+                            }
+
+                            for (var i = 0; i < data.length; i++) {
+                                //计算其余国家GDP
+                                var restPercent = 100;
+                                var restValue = 0;
+                                data[i].data.forEach(function(ele) {
+                                    restPercent = restPercent - ele.value[1];
+                                });
+                                restValue = data[i].data[0].value[0] * (restPercent / data[i].data[0].value[1]);
+                                console.log(restPercent);
+                                console.log(restValue);
+                                option.options.push({
+                                    visualMap: [{
+                                        dimension: 0,
+                                        left: 10,
+                                        itemWidth: 12,
+                                        min: data[i].data[9].value[0],
+                                        max: data[i].data[0].value[0],
+                                        text: ['High', 'Low'],
+                                        textStyle: {
+                                            color: '#0a0b0e'
+                                        },
+                                        inRange: {
+                                            color: ['lightskyblue', 'yellow', 'orangered', 'red']
+                                        }
+                                    }],
+                                    xAxis: {
+                                        type: 'value',
+                                        boundaryGap: [0, 0.1],
+                                        axisLabel: {
+                                            show: false,
+                                        }
+                                    },
+                                    yAxis: {
+                                        type: 'category',
+                                        axisLabel: {
+                                            textStyle: {
+                                                color: '#0a0b0e'
+                                            }
+                                        },
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[2]
+                                        }).reverse()
+                                    },
+                                    series: [{
+                                        id: 'map',
+                                        data: data[i].data
+                                    }, {
+                                        id: 'bar',
+                                        data: data[i].data.map(function(ele) {
+                                            return ele.value[0]
+                                        }).sort(function(a, b) {
+                                            return a > b
+                                        })
+                                    }, {
+                                        id: 'pie',
+                                        data: data[i].data.map(function(ele) {
+                                            return {
+                                                name: ele.value[2],
+                                                value: ele.value
+                                            }
+                                        }).concat({
+                                            name: '其他国家',
+                                            value: restValue
+                                        }),
+                                    }]
+                                })
+                            }
+
+                            // 使用刚指定的配置项和数据显示图表。
+                            myChart.setOption(option);
+                        </script>
+                    </div>
+
+
+                </div>
+
+                <script src="js/echarts.min.js"></script>
+                <script src="js/world.js"></script>
+                <!--<script src="js/index2.js"></script>-->
+
+</body>
+
+</html>
